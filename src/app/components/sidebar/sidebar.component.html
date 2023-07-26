@@ -1,0 +1,9 @@
+<div class="sidebar-card" [ngStyle]="{'transform': isOpen ? 'translateY(0px)' : 'translateY(85vh)'}">
+  <div>
+    <ng-content></ng-content>
+    <div style="display: flex; flex-direction: column; align-items: center;gap: 12px;margin-bottom:30px;">
+      <button style="padding: 10px 15px;width: 200px;" (click)="backSidebar()">Select</button>
+      <button style="padding: 10px 15px;width: 200px;" (click)="backSidebar()">Back</button>
+    </div>
+  </div>
+</div>
