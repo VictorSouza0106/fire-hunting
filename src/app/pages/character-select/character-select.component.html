@@ -1,53 +1,111 @@
 <div
-  style="display: flex; justify-content: center; align-items: center; height: 100vh;flex-wrap: wrap;margin: 0 20px; overflow: hidden; background-color: chartreuse;">
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px;">
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-wrap: wrap;
+    margin: 0 20px;
+    overflow: hidden;
+    background-color: chartreuse;
+  "
+>
+  <div
+    style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px"
+  >
     <div *ngFor="let character of characters">
       <div (click)="setCharacter(character)">
-        <img src="./../../../assets/diplomata.png" style="height: 130px;">
+        <img src="./../../../assets/diplomata.png" style="height: 130px" />
       </div>
     </div>
   </div>
 </div>
-<app-sidebar [isOpen]="
-!!selectedCharacter" (onBack)="setCharacter(null)">
-  <div>
-    <div style="display: flex; gap: 20px; flex-direction: column">
-      <div class=""
-        style="margin: 0 30px; display: flex; justify-content: space-between;align-items: center; font-size: 2em;">
-        <i class="mdi mdi-chevron-left" (click)="changeCharacter(false)"></i>
-        <label style="text-align: center;">{{selectedCharacter?.className}}</label>
-        <i class="mdi mdi-chevron-right" (click)="changeCharacter(true)"></i>
+<app-sidebar [isOpen]="!!selectedCharacter" (onBack)="setCharacter(null)">
+  <div *ngIf="selectedCharacter">
+    <div class="character-title-container">
+      <img
+        class="arrows"
+        src="./../../../assets/arrow.png"
+        (click)="changeCharacter(false)"
+      />
+      <div class="character-img">
+        <img src="../../../assets/characther-frame.png" alt="" />
+        <label class="character-title-text">{{
+          selectedCharacter.className
+        }}</label>
+      </div>
+      <img
+        class="arrows"
+        src="./../../../assets/arrow.png"
+        style="transform: scaleX(-1)"
+        (click)="changeCharacter(true)"
+      />
+    </div>
+    <div class="character-desc-card">
+      <label class="character-status-title">Status</label>
+
+      <div class="character-status">
+        <app-status-circle
+          [statusValue]="selectedCharacter?.money"
+          [statusName]="'Dinheiro'"
+        ></app-status-circle>
+        <app-status-circle
+          [statusValue]="selectedCharacter?.life"
+          [statusName]="'Vida'"
+        ></app-status-circle>
+        <app-status-circle
+          [statusValue]="selectedCharacter?.perception"
+          [statusName]="'Percepçao'"
+        ></app-status-circle>
+      </div>
+      <div
+        style="
+          display: flex;
+          gap: 25px;
+          flex-wrap: wrap;
+          justify-content: center;
+        "
+      >
+        <app-status-circle
+          [statusValue]="selectedCharacter?.criativity"
+          [statusName]="'Criatividade'"
+        ></app-status-circle>
+        <app-status-circle
+          [statusValue]="selectedCharacter?.strength"
+          [statusName]="'Força'"
+        ></app-status-circle>
+        <app-status-circle
+          [statusValue]="selectedCharacter?.mechanicalInt"
+          [statusName]="'Int. Mecanica'"
+        ></app-status-circle>
       </div>
 
-      <label for="" style="text-align: center; font-size: 1.5em;">Status</label>
+      <label for="" style="text-align: center; font-size: 1.5em"
+        >Historia</label
+      >
 
-      <div style="display: flex; gap: 25px;flex-wrap: wrap;justify-content: center">
-        <app-status-circle [statusValue]="selectedCharacter?.money" [statusName]="'Dinheiro'"></app-status-circle>
-        <app-status-circle [statusValue]="selectedCharacter?.life" [statusName]="'Vida'"></app-status-circle>
-        <app-status-circle [statusValue]="selectedCharacter?.perception" [statusName]="'Percepçao'"></app-status-circle>
-      </div>
-      <div style="display: flex; gap: 25px;flex-wrap: wrap;justify-content: center;">
-        <app-status-circle [statusValue]="selectedCharacter?.criativity"
-          [statusName]="'Criatividade'"></app-status-circle>
-        <app-status-circle [statusValue]="selectedCharacter?.strength" [statusName]="'Força'"></app-status-circle>
-        <app-status-circle [statusValue]="selectedCharacter?.mechanicalInt"
-          [statusName]="'Int. Mecanica'"></app-status-circle>
-      </div>
+      <label for="" style="margin: 0 25px; font-size: 1em; line-height: 1.5">{{
+        selectedCharacter?.history
+      }}</label>
 
-      <label for="" style="text-align: center; font-size: 1.5em;">Historia</label>
+      <label for="" style="text-align: center; font-size: 1.5em"
+        >Items Iniciais</label
+      >
 
-      <label for="" style="margin: 0 25px; font-size:1em; line-height: 1.5;">{{selectedCharacter?.history}}</label>
-
-      <label for="" style="text-align: center; font-size: 1.5em;">Items Iniciais</label>
-
-      <div style="margin: 0 25px;">
+      <div style="margin: 0 25px">
         <ul>
-          <li><i class="mdi mdi-arrow-right-bold-hexagon-outline"></i>Cartao de Acesso</li>
-          <li><i class="mdi mdi-arrow-right-bold-hexagon-outline"></i>Conhece pessoas dentro da Capital</li>
+          <li>
+            <i class="mdi mdi-arrow-right-bold-hexagon-outline"></i>Cartao de
+            Acesso
+          </li>
+          <li>
+            <i class="mdi mdi-arrow-right-bold-hexagon-outline"></i>Conhece
+            pessoas dentro da Capital
+          </li>
         </ul>
       </div>
+      <button style="padding: 10px 15px; width: 200px">Select</button>
+      <button style="padding: 10px 15px; width: 200px">Back</button>
     </div>
   </div>
-
-
 </app-sidebar>

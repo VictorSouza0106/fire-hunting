@@ -1,20 +1,16 @@
 .sidebar-card {
   position: fixed;
 
-  height: 85vh;
+  height: 80vh;
   width: 100%;
 
-  overflow: scroll;
-
-  // padding-top: 25px;
-
-  background-color: gold;
+  background-color: #cca1b3;
   transition: all 0.8s;
 
   bottom: 0;
 
   div {
-    padding-top: 25px;
+    height: 80vh;
+    overflow: scroll;
   }
-
 }

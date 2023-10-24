@@ -1,11 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './reset.scss';
+@import "./reset.scss";
+@import "./global-vars.scss";
 
-@import url('https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css');
+@import url("https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Bungee+Spice&family=Pixelify+Sans&family=Roboto:wght@400;700;900&display=swap");
 
 body {
   background-color: rebeccapurple;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+* {
+  font-family: "Pixelify Sans", sans-serif;
+  text-shadow: 1px 1px 0px #fff;
+
+  image-rendering: pixelated;
+}
+
+.inverse-color-text {
+  color: #fff;
+  text-shadow: 1px 1px 0px #000;
 }
 
 .center-content {

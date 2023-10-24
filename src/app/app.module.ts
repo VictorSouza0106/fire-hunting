@@ -7,6 +7,19 @@ import { CharacterSelectComponent } from './pages/character-select/character-sel
 import { LobbyComponent } from './pages/lobby/lobby.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { StatusCircleComponent } from './components/status-circle/status-circle.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+export const environment = {
+  production: false,
+  socketUrl: 'http://localhost:3000'
+};
+
+const config: SocketIoConfig = {
+	url: environment.socketUrl, // socket server url;
+	options: {
+		transports: ['websocket']
+	}
+}
 
 @NgModule({
   declarations: [
@@ -18,7 +31,8 @@ import { StatusCircleComponent } from './components/status-circle/status-circle.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SocketIoModule.forRoot(config),
   ],
   providers: [],
   bootstrap: [AppComponent]
