@@ -7,19 +7,11 @@ import { CharacterSelectComponent } from './pages/character-select/character-sel
 import { LobbyComponent } from './pages/lobby/lobby.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { StatusCircleComponent } from './components/status-circle/status-circle.component';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 export const environment = {
   production: false,
-  socketUrl: 'http://localhost:3000'
+  socketUrl: 'http://localhost:3000',
 };
-
-const config: SocketIoConfig = {
-	url: environment.socketUrl, // socket server url;
-	options: {
-		transports: ['websocket']
-	}
-}
 
 @NgModule({
   declarations: [
@@ -27,14 +19,10 @@ const config: SocketIoConfig = {
     CharacterSelectComponent,
     LobbyComponent,
     SidebarComponent,
-    StatusCircleComponent
+    StatusCircleComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SocketIoModule.forRoot(config),
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
