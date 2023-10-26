@@ -30,9 +30,23 @@
       />
       <div class="character-img">
         <img src="../../../assets/characther-frame.png" alt="" />
-        <label class="character-title-text">{{
-          selectedCharacter.className
-        }}</label>
+        <div style="display: flex">
+          <img
+            style="height: 54px; width: 85px"
+            src="../../../assets/Title-BG-border.png"
+            alt=""
+          />
+          <div class="character-title-text">
+            <label class="inverse-color-text">{{
+              selectedCharacter.className
+            }}</label>
+          </div>
+          <img
+            style="height: 54px; width: 85px; transform: scaleX(-1)"
+            src="../../../assets/Title-BG-border.png"
+            alt=""
+          />
+        </div>
       </div>
       <img
         class="arrows"
@@ -46,15 +60,15 @@
 
       <div class="character-status">
         <app-status-circle
-          [statusValue]="selectedCharacter?.money"
+          [statusValue]="selectedCharacter.money"
           [statusName]="'Dinheiro'"
         ></app-status-circle>
         <app-status-circle
-          [statusValue]="selectedCharacter?.life"
+          [statusValue]="selectedCharacter.life"
           [statusName]="'Vida'"
         ></app-status-circle>
         <app-status-circle
-          [statusValue]="selectedCharacter?.perception"
+          [statusValue]="selectedCharacter.perception"
           [statusName]="'Percepçao'"
         ></app-status-circle>
       </div>
@@ -67,15 +81,15 @@
         "
       >
         <app-status-circle
-          [statusValue]="selectedCharacter?.criativity"
+          [statusValue]="selectedCharacter.criativity"
           [statusName]="'Criatividade'"
         ></app-status-circle>
         <app-status-circle
-          [statusValue]="selectedCharacter?.strength"
+          [statusValue]="selectedCharacter.strength"
           [statusName]="'Força'"
         ></app-status-circle>
         <app-status-circle
-          [statusValue]="selectedCharacter?.mechanicalInt"
+          [statusValue]="selectedCharacter.mechanicalInt"
           [statusName]="'Int. Mecanica'"
         ></app-status-circle>
       </div>
@@ -85,7 +99,7 @@
       >
 
       <label for="" style="margin: 0 25px; font-size: 1em; line-height: 1.5">{{
-        selectedCharacter?.history
+        selectedCharacter.history
       }}</label>
 
       <label for="" style="text-align: center; font-size: 1.5em"

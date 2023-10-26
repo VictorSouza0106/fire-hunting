@@ -40,15 +40,24 @@ li {
   }
 
   .character-title-text {
-    text-align: center;
-    font-family: roboto;
-    font-weight: bold;
-    font-style: italic;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    // background: url(../../../assets/Title.png);
-    // background-size: 100px cover;
-    // background-repeat: no-repeat;
+    background: url(../../../assets/Title-BG.png);
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+
+    min-width: 220px;
+    max-height: 55px;
+
+    label {
+      text-align: center;
+      // font-family: roboto;
+      // font-weight: bold;
+      // font-style: italic;
+      text-transform: uppercase;
+    }
   }
 }
 

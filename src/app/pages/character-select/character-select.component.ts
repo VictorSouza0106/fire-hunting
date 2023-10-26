@@ -16,7 +16,7 @@ export class CharacterSelectComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // this.selectedCharacter = this.characters[0];
+    this.selectedCharacter = this.characters[0];
   }
 
   public setCharacter(character: ICharacterStatus | null) {
