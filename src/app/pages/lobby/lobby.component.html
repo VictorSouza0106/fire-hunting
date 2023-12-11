@@ -1,14 +1,17 @@
-<div
-  style="
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    gap: 12px;
-  "
->
-  <button>Create Lobby</button>
-  <button>Enter Lobby</button>
-  <button (click)="goToURL('character-select')">Create Character</button>
+<div class="lobby-container">
+  <button>Start Adventure</button>
+  <div class="roomCode-container">
+    <p *ngFor="let char of lobby.roomCode.split('')">{{ char }}</p>
+  </div>
+  <div class="user-list-container">
+    <div class="user-container" *ngFor="let user of users">
+      <img src="../../../assets/characther-frame.png" />
+      <p>{{ user.username }}</p>
+      <i
+        *ngIf="user.isMaster"
+        class="mdi mdi-crown"
+        style="color: rgb(191, 191, 2)"
+      ></i>
+    </div>
+  </div>
 </div>

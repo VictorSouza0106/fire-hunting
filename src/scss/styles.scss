@@ -13,7 +13,6 @@ body {
 
 * {
   font-family: "Pixelify Sans", sans-serif;
-  text-shadow: 1px 1px 0px #fff;
 
   image-rendering: pixelated;
 }
@@ -33,3 +32,6 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

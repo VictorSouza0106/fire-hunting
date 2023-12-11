@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CharacterSelectComponent } from './pages/character-select/character-select.component';
 import { LobbyComponent } from './pages/lobby/lobby.component';
+import { MainMenuComponent } from './pages/main-menu/main-menu.component';
 
 const routes: Routes = [
+  {
+    path: `home`,
+    component: MainMenuComponent,
+  },
   {
     path: 'character-select',
     component: CharacterSelectComponent,
@@ -14,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/lobby',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
 ];

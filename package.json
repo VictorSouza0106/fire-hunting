@@ -12,14 +12,18 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.3.0",
+    "@angular/cdk": "^13.0.0",
     "@angular/common": "^14.3.0",
     "@angular/compiler": "^14.3.0",
     "@angular/core": "^14.3.0",
     "@angular/forms": "^14.3.0",
+    "@angular/material": "^13.0.0",
     "@angular/platform-browser": "^14.3.0",
     "@angular/platform-browser-dynamic": "^14.3.0",
     "@angular/router": "^14.3.0",
+    "lodash": "^4.17.21",
     "rxjs": "~7.5.0",
+    "socket.io-client": "^4.7.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -27,6 +31,7 @@
     "@angular/cli": "^14.2.12",
     "@angular/compiler-cli": "^14.3.0",
     "@types/jasmine": "~3.10.0",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",

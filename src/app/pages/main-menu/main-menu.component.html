@@ -1,0 +1,36 @@
+<div class="menu-container">
+  <img
+    [ngStyle]="{ width: menuState === 'menu' ? '75vw' : '45vw' }"
+    src="../../../assets/characther-frame.png"
+  />
+  <div [ngSwitch]="menuState">
+    <div *ngSwitchCase="'menu'" class="lobby-buttons-container">
+      <button (click)="insertLobbyCode()">Enter Lobby</button>
+      <button (click)="createLobby()">Create Lobby</button>
+    </div>
+
+    <div *ngSwitchCase="'enter'" class="lobby-buttons-container">
+      <p>Insira o Código</p>
+      <div style="display: flex; flex-direction: column">
+        <input maxlength="6" type="text" #roomCodeInput />
+      </div>
+      <button (click)="enterLobby(roomCodeInput.value)">Enter</button>
+      <button (click)="backToMenu()">Voltar</button>
+    </div>
+
+    <div *ngSwitchCase="'create'" class="lobby-buttons-container">
+      <p>Código da Sala</p>
+      <div style="display: flex; flex-direction: column">
+        <input
+          disabled
+          value="{{ lobby.roomCode }}"
+          maxlength="6"
+          type="text"
+        />
+      </div>
+      <button (click)="clipCode()">Copiar Código</button>
+      <button (click)="enterLobby()">Enter</button>
+      <button (click)="backToMenu()">Voltar</button>
+    </div>
+  </div>
+</div>

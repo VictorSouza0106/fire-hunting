@@ -1,19 +1,11 @@
-li {
-  // font-size: 1.3em;
-
-  margin: 10px 0;
-
-  i {
-    margin-right: 10px;
-  }
-}
-
 .character-title-container {
   position: absolute;
   left: 0;
   right: 0;
   margin: 0 50px;
-  top: -65px;
+  top: -85px;
+
+  transition: all 1s;
 
   display: flex;
   align-items: center;
@@ -39,17 +31,30 @@ li {
     min-width: 220px;
   }
 
+  .character-title-text-border {
+    z-index: 1;
+    height: 54px;
+    width: 85px;
+    margin-right: -1px;
+
+    &:last-child {
+      transform: scaleX(-1);
+      margin-left: -1px;
+    }
+  }
+
   .character-title-text {
     display: flex;
     align-items: center;
     justify-content: center;
 
     background: url(../../../assets/Title-BG.png);
-    background-size: 100% 100%;
-    background-repeat: repeat-y;
+    background-repeat: repeat-x;
 
     min-width: 220px;
     max-height: 55px;
+
+    z-index: 5;
 
     label {
       text-align: center;
@@ -61,24 +66,34 @@ li {
   }
 }
 
-.character-desc-card {
+.character-desc-card-container {
+  background-color: rgb(178, 230, 226);
   display: flex;
-  flex-direction: column;
-  padding-top: 140px;
+  height: 80vh;
 
-  .character-status-title {
-    text-align: center;
-    font-size: 1.5em;
-  }
-
-  .character-status {
+  .character-desc-card {
+    min-width: 100vw;
     display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+    flex-direction: column;
 
-  label {
-    padding: 30px 0 16px 0;
+    bottom: 0px;
+
+    transition: all 0.1s;
+
+    .character-status-title {
+      text-align: center;
+      font-size: 1.5em;
+    }
+
+    .character-status {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    label {
+      padding: 30px 0 16px 0;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { WindowService } from './services/window.service';
+import { SocketService } from './services/socketio.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,13 @@ import { WindowService } from './services/window.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  public isMobile: boolean =
+    window.innerWidth < this.windowService.MOBILE_WIDTH ? true : false;
 
-  public isMobile:boolean = window.innerWidth < this.windowService.MOBILE_WIDTH ? true : false;
-
-  constructor(private windowService: WindowService) {}
+  constructor(
+    private windowService: WindowService,
+    private socketService: SocketService
+  ) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
@@ -20,8 +24,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.windowService.isMobile.subscribe(isMobile =>
-      this.isMobile = isMobile
-    )
+    this.windowService.isMobile.subscribe(
+      (isMobile) => (this.isMobile = isMobile)
+    );
+
+    this.socketService.on('message', (res) => console.log('receive => ', res));
   }
 }

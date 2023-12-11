@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ILobby, IUser } from 'src/app/helpers/interfaces';
+import { LobbyService } from 'src/app/services/lobby.service';
 
 @Component({
   selector: 'app-lobby',
@@ -7,11 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./lobby.component.scss'],
 })
 export class LobbyComponent implements OnInit {
-  constructor(private router: Router) {}
+  public lobby: ILobby;
 
-  ngOnInit(): void {}
+  public users: IUser[];
 
-  public goToURL(URL: string): void {
-    this.router.navigateByUrl(URL);
+  constructor(private lobbyService: LobbyService) {
+    this.lobby = this.lobbyService.lobby;
+    this.users = this.lobby.users;
+  }
+
+  ngOnInit(): void {
+    this.lobbyService.startLobbyListener();
+
+    this.lobbyService.lobbySubject.subscribe((lobby) => {
+      console.log(lobby);
+
+      this.users = lobby.users;
+    });
   }
 }

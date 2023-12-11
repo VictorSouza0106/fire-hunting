@@ -19,10 +19,8 @@
     "target": "es2020",
     "module": "es2020",
     "strictPropertyInitialization": false,
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"],
+    "types": ["socket.io-client"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

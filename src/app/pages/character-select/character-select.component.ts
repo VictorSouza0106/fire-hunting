@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { findIndex } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { SimpleDialogComponent } from 'src/app/dialogs/simple-dialog/simple-dialog.component';
 import { CHARACTERS, ICharacterStatus } from 'src/app/helpers/characters';
+import { LobbyService } from 'src/app/services/lobby.service';
 
 @Component({
   selector: 'app-character-select',
@@ -10,43 +13,51 @@ import { CHARACTERS, ICharacterStatus } from 'src/app/helpers/characters';
 export class CharacterSelectComponent implements OnInit {
   public characters = CHARACTERS;
 
-  public selectedCharacter: ICharacterStatus | null;
-  public animationDirection: boolean | null = null;
+  public selectedCharacter: ICharacterStatus = this.characters[0];
 
-  constructor() {}
+  public isSideBarOpened: boolean = false;
+
+  constructor(
+    private dialog: MatDialog,
+    private lobbyService: LobbyService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.selectedCharacter = this.characters[0];
   }
 
-  public setCharacter(character: ICharacterStatus | null) {
-    if (this.selectedCharacter) this.selectedCharacter = null;
-    else this.selectedCharacter = character;
+  public setCharacter(character: ICharacterStatus) {
+    this.selectedCharacter = character;
+    this.isSideBarOpened = true;
+  }
+
+  public cancelSelection() {
+    this.isSideBarOpened = false;
   }
 
   public changeCharacter(direction: boolean) {
-    if (direction) {
-      let nextIndex =
-        (this.characters.findIndex(
-          (character) =>
-            character.className === this.selectedCharacter?.className
-        ) +
-          1) %
-        this.characters.length;
-      this.selectedCharacter = this.characters[nextIndex];
-      this.animationDirection = true;
-      console.log(this.animationDirection);
-    } else {
-      let prevIndex =
-        (this.characters.findIndex(
-          (character) =>
-            character.className === this.selectedCharacter?.className
-        ) -
-          1) %
-        this.characters.length;
-      if (prevIndex === -1) prevIndex = this.characters.length - 1;
-      this.selectedCharacter = this.characters[prevIndex];
-      this.animationDirection = false;
+    let currIndex = this.characters.findIndex(
+      (character) => character.className === this.selectedCharacter?.className
+    );
+
+    if (direction && currIndex < this.characters.length - 1) {
+      this.selectedCharacter = this.characters[currIndex + 1];
+    } else if (!direction && currIndex > 0) {
+      this.selectedCharacter = this.characters[currIndex - 1];
     }
+  }
+
+  public setCharacterName() {
+    this.dialog
+      .open(SimpleDialogComponent, {
+        width: '250px',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        console.log(res);
+        this.lobbyService.addUserToLobby(res).subscribe();
+        this.router.navigateByUrl('/lobby');
+      });
   }
 }

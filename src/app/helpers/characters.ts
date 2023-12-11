@@ -1,5 +1,6 @@
 export const CHARACTERS: ICharacterStatus[] = [
   {
+    id: 0,
     className: 'DIPLOMATA',
     life: 60,
     money: 200,
@@ -11,6 +12,7 @@ export const CHARACTERS: ICharacterStatus[] = [
       'A Capital - Localizada no centro da Ilha a Capital costuma ter os grandes Diplomatas que cuidam da parte politica de toda a nação. Comandada pelos 6 Fire Heads e seu grande Tribunal Brilhante',
   },
   {
+    id: 1,
     className: 'Caçador',
     life: 100,
     money: 80,
@@ -22,6 +24,7 @@ export const CHARACTERS: ICharacterStatus[] = [
       'A Floresta - Os Vagalumes de Fogo é a maior fonte de energia da Neon Light, A floresta esta repleto deles, porem a Fauna e Flora da ilha das luzes e sempre uma surpresa.',
   },
   {
+    id: 2,
     className: 'Engenheiro',
     life: 90,
     money: 120,
@@ -33,6 +36,7 @@ export const CHARACTERS: ICharacterStatus[] = [
       'As Esteiras Industriais - Muitos Vagalumes de Fogo sao coletados, cada um com seu nivel de energia! è muito importante separar cada um deles nas grandes esteiras',
   },
   {
+    id: 3,
     className: 'Cientista',
     life: 75,
     money: 160,
@@ -44,6 +48,7 @@ export const CHARACTERS: ICharacterStatus[] = [
       'O Grande Conversor - Após os cientistas descobrirem como transformar a energia dos Vagalumes de Fogo em energia, eles criaram um grande conversor para maximizar a quantidade de energia gerada',
   },
   {
+    id: 4,
     className: 'Inventor',
     life: 70,
     money: 100,
@@ -55,6 +60,7 @@ export const CHARACTERS: ICharacterStatus[] = [
       'A Criacao da Luz - Conhecida como a ala dos Ferreiros, cientistas e Aspirantes a inventores, A Cidade criação de Luz contempla qualquer tipo de ferramenta e artificio de cunho duvidosos que deseja',
   },
   {
+    id: 5,
     className: 'Delinquente',
     life: 85,
     money: 50,
@@ -66,6 +72,7 @@ export const CHARACTERS: ICharacterStatus[] = [
       'Neon City - A área residencial da Ilha, a grande parte dos trabalhadores e residentes da ilha moram nessa Ala',
   },
   {
+    id: 6,
     className: 'Robô',
     life: 50,
     money: 0,
@@ -79,6 +86,7 @@ export const CHARACTERS: ICharacterStatus[] = [
 ];
 
 export interface ICharacterStatus {
+  id: number;
   className: string;
   classImg?: string;
   life: number;
