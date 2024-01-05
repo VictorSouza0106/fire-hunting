@@ -1,27 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { log } from 'console';
 import { map, catchError, of } from 'rxjs';
 import { ILobby } from 'src/app/helpers/interfaces';
 import { LobbyService } from 'src/app/services/lobby.service';
 import { UserService } from 'src/app/services/user.service';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
 })
-export class MainMenuComponent implements OnInit {
+export class MainMenuComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private lobbyService: LobbyService,
-    private userService: UserService
-  ) {}
-
+    private userService: UserService,
+    private windowService: WindowService
+  ) {
+    this.isMobile = window.innerWidth < this.windowService.MOBILE_WIDTH;
+  }
   public menuState: 'menu' | 'create' | 'enter' = 'menu';
   public lobby: ILobby;
 
-  ngOnInit(): void {}
+  public isMobile: boolean;
+
+  ngOnInit(): void {
+    this.windowService.isMobile.subscribe((isMob) => (this.isMobile = isMob));
+  }
+
+  ngOnDestroy(): void {
+    this.windowService.isMobile.unsubscribe();
+  }
 
   public goToURL(URL: string): void {
     this.router.navigateByUrl(URL);

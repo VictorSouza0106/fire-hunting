@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, catchError, map, of } from 'rxjs';
-import { ILobby } from '../helpers/interfaces';
+import { ILobby, ISocketMessage } from '../helpers/interfaces';
 import { SocketService } from './socketio.service';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { SocketService } from './socketio.service';
 })
 export class LobbyService extends BaseService {
   public lobby: ILobby;
-  public lobbySubject: Subject<ILobby> = new Subject<ILobby>();
+  public lobbySubject: Subject<ISocketMessage> = new Subject<ISocketMessage>();
 
   constructor(private http: HttpClient, private socket: SocketService) {
     super();
@@ -25,16 +25,25 @@ export class LobbyService extends BaseService {
   }
 
   public startLobbyListener() {
-    this.socket.on(this.lobby.roomCode, (lobby) => {
-      console.log(lobby);
+    this.socket.on(this.lobby.roomCode, (SocketMessage) => {
+      console.log('SOCKET MESSAGE ', SocketMessage);
 
-      this.lobbySubject.next(lobby);
+      this.lobbySubject.next(SocketMessage);
     });
   }
 
   public addUserToLobby(username: string) {
     return this.http.put(
       this.baseURL + '/lobby/addUser/' + username,
+      this.lobby
+    );
+  }
+
+  public removeUserFromLobby(username: string) {
+    console.log(username);
+
+    return this.http.put(
+      this.baseURL + '/lobby/removeUser/' + username,
       this.lobby
     );
   }

@@ -1,10 +1,13 @@
-<div class="menu-container">
-  <img
-    [ngStyle]="{ width: menuState === 'menu' ? '75vw' : '45vw' }"
-    src="../../../assets/characther-frame.png"
-  />
+<div
+  class="menu-container"
+  [ngClass]="{ 'desktop-bg': !isMobile, 'mobile-bg': isMobile }"
+>
   <div [ngSwitch]="menuState">
-    <div *ngSwitchCase="'menu'" class="lobby-buttons-container">
+    <div
+      *ngSwitchCase="'menu'"
+      class="lobby-buttons-container"
+      [ngClass]="{ 'desktop-display': !isMobile, 'mobile-display': isMobile }"
+    >
       <button (click)="insertLobbyCode()">Enter Lobby</button>
       <button (click)="createLobby()">Create Lobby</button>
     </div>

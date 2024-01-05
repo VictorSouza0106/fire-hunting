@@ -1,14 +1,27 @@
+.desktop-bg {
+  background-image: url(../../../assets/Placeholder-desktop.jpg);
+  background-position: top right;
+}
+
+.mobile-bg {
+  background-image: url(../../../assets/Placeholder-mobile.jpg);
+  background-position: center;
+  justify-content: center;
+}
+
 .menu-container {
   display: flex;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column;
-  gap: 75px;
+  align-items: flex-end;
+  height: 100dvh;
 
-  img {
-    margin-top: 20vh;
-    transition: all 1s;
+  background-size: cover;
+
+  .desktop-display {
+    padding: 0 0 5vh 5vw;
+  }
+
+  .mobile-display {
+    padding-bottom: 5vh;
   }
 
   .lobby-buttons-container {
