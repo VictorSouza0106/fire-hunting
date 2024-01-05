@@ -9,3 +9,8 @@ export interface IUser {
   isMaster: boolean;
   username: string;
 }
+
+export interface ISocketMessage {
+  type: string;
+  data: any;
+}

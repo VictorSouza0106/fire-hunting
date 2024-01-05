@@ -24,10 +24,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.windowService.isMobile.subscribe(
-      (isMobile) => (this.isMobile = isMobile)
+    this.windowService.isMobile.next(
+      window.innerWidth < this.windowService.MOBILE_WIDTH
     );
-
-    this.socketService.on('message', (res) => console.log('receive => ', res));
+    console.log('TT', window.innerWidth < this.windowService.MOBILE_WIDTH);
   }
 }
